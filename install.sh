@@ -61,6 +61,7 @@ brew cask install zoomus
 
 # Installs Python, Virtualenv, and GMvault
 # http://gmvault.org/
+sudo easy_install pip
 brew install python
 pip install virtualenv
 virtualenv --no-site-packages gmvault-1.7-beta
@@ -111,7 +112,7 @@ brew install ansible
 # https://philsturgeon.uk/php/2013/08/20/php-static-analysis-in-sublime-text/
 # http://benmatselby.github.io/sublime-phpcs/
 echo "Setting up PHP Tools"
-sudo chown -R `whoami` /usr/local
+sudo chown -R $(whoami) $(brew --prefix)/*
 brew tap homebrew/homebrew-php
 
 # Do the Mac thing that you have to do but you shouldn't have to do
