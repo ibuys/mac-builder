@@ -24,7 +24,6 @@ sudo xcodebuild -license accept
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Homebrew
-brew install imagemagick
 brew install ruby
 brew install git
 brew install wget
@@ -35,37 +34,23 @@ brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap homebrew/binary
 brew tap homebrew/php
-brew install homebrew/php/terminus
 brew install homebrew/php/wp-cli
 
 # Applications
 brew cask install 1password
-brew cask install balsamiq-mockups
 brew cask install bartender
 brew cask install docker
 brew cask install firefox
-brew cask install flux
 brew cask install google-chrome
 brew cask install google-photos-backup
 brew cask install harvest
-brew cask install integrity
 brew cask install iterm2
-brew cask install kap
-brew cask install limechat
-brew cask install omnigraffle
-brew cask install openoffice
-brew cask install processing
-brew cask install rescuetime
-brew cask install java
-brew cask install screaming-frog-seo-spider
-brew cask install sketch
+brew cask install omnifocus
 brew cask install skitch
 brew cask install skype
 brew cask install slack
-brew cask install sourcetree
+brew cask install tower
 brew cask install sublime-text
-brew cask install vagrant
-brew cask install vagrant-manager
 brew cask install virtualbox
 brew cask install zoomus
 
@@ -88,16 +73,10 @@ brew install node
 brew install npm
 # Easy accessibility audits powered by the Chrome Accessibility Tools
 npm install --global a11y
-# The Grunt command line interface
-npm install --global grunt-cli
-# Automates ImageOptim, ImageAlpha, and JPEGmini
-npm install --global imageoptim-cli
 # Minify images
 npm install --global imagemin-cli
 # Lighthouse analyzes web apps and web pages, collecting modern performance metrics and insights on developer best practices
 npm install --global lighthouse
-# Pa11y is your automated accessibility testing pal. It runs HTML CodeSniffer from the command line for programmatic accessibility reporting
-npm install --global pa11y@beta
 # Prettier is an opinionated code formatter
 npm install --global prettier
 # PageSpeed Insights with reporting
@@ -117,14 +96,16 @@ composer global require hirak/prestissimo
 composer global require drupal/coder
 # Adds WordPress Coding Standards
 composer global require wp-coding-standards/wpcs:dev-master
+composer global require pantheon-systems/terminus
+composer global require phpmd/phpmd
+composer global require sebastian/phpcpd
+composer global require consolidation/robo
 
 # Sets Config for PHP_CodeSniffer
 phpcs --config-set installed_paths $HOME/.composer/vendor/drupal/coder/coder_sniffer,$HOME/.composer/vendor/wp-coding-standards/wpcs
 
 # Be sure we can vagrant
 brew install ansible
-vagrant plugin install vagrant-hostmanager
-vagrant plugin install vagrant-auto_network
 
 # Set up PHP tools
 # https://philsturgeon.uk/php/2013/08/20/php-static-analysis-in-sublime-text/
@@ -143,7 +124,7 @@ pause 'Press [Enter] when you have added your ssh key.'
 chmod 400 ~/.ssh/*
 
 # Get git things
-curl -o /usr/local/etc/bash_completion.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
-curl -o /usr/local/etc/bash_completion.d/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
+#curl -o /usr/local/etc/bash_completion.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+#curl -o /usr/local/etc/bash_completion.d/git-completion.bash https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash
 
 echo "NICE WORK! Time to do the things."
