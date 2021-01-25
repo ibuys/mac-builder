@@ -12,6 +12,7 @@ function pause() {
 CWD=($PWD)
 
 cd ~
+mkdir -p Unix/env
 
 # We can't get them directly, but just click this button :)
 xcode-select --install
@@ -21,108 +22,76 @@ pause 'Press [Enter] once you have installed XCode and XCode Command Line Tools.
 # Just make sure...
 sudo xcodebuild -license accept
 
+# DANGER, DANGER Will Robinson! 🤖
+sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
 # Homebrew
+brew install cairo
+brew install flake8
+brew install gdk-pixbuf
+brew install jq
+brew install jsmin
+brew install libffi
+brew install mysql
+brew install npm
+brew install pango
+brew install python
+brew install python3
 brew install ruby
-brew install git
-brew install wget
+brew install zsh-autosuggestions
+brew install zsh-syntax-highlighting
+brew install gpg
+brew install black
+brew install mas
 brew install brew-cask
 
 brew tap caskroom/cask
 brew tap homebrew/dupes
 brew tap homebrew/versions
 brew tap homebrew/binary
-brew tap homebrew/php
-brew install homebrew/php/wp-cli
 
 # Applications
-brew cask install 1password
-brew cask install bartender
-brew cask install docker
-brew cask install firefox
-brew cask install google-chrome
-brew cask install google-photos-backup
-brew cask install harvest
-brew cask install iterm2
-brew cask install omnifocus
-brew cask install skitch
-brew cask install skype
-brew cask install slack
-brew cask install tower
-brew cask install sublime-text
-brew cask install virtualbox
-brew cask install zoomus
+brew cask install Acorn
+brew cask install Aviatrix VPN Client
+brew cask install BBEdit
+brew cask install Docker
+brew cask install Google Chrome
+brew cask install Hazel
+brew cask install Keyboard Maestro
+brew cask install NetNewsWire
+brew cask install OmniFocus
+brew cask install OmniGraffle
+brew cask install OmniOutliner
+brew cask install Pastebot
+brew cask install Transmit
 
-# Not available
-# - Mac Remover
-# - Pixelmator
-# - Reason 8
+# MAS Apps
+# Update as needed!
+mas signin mas@example.com
+mas install 1333542190 # 1Password
+mas install 1121192229 # Better blocker
+mas install 1055511498 # Day One
+mas install 882637653 # Debit & Credit
+mas install 1544743900 # Hush
+mas install 1458866808 # Mac Family Tree
+mas install 1289197285 # MindNode
+mas install 409203825 # Numbers
+mas install 409201541 # Pages
+mas install 413965349 # Soulver
+mas install 408981434 # iMovie
 
-# Installs Python, Virtualenv, and GMvault
+# Setup Python, Virtualenv
 # http://gmvault.org/
-sudo easy_install pip
-brew install python
+python3 -m venv ~/Unix/env/virtualenv
+source ~/Unix/env/virtualenv
 pip install virtualenv
-virtualenv --no-site-packages gmvault-1.7-beta
-cd gmvault-1.7-beta/bin
-./pip install gmvault
+virtualenv -p /usr/bin/python ~/Unix/env/py2env
+deactivate
+
 cd ~
 
-# Node/NPM Tools
-brew install node
-brew install npm
-# Easy accessibility audits powered by the Chrome Accessibility Tools
-npm install --global a11y
-# Minify images
-npm install --global imagemin-cli
-# Lighthouse analyzes web apps and web pages, collecting modern performance metrics and insights on developer best practices
-npm install --global lighthouse
-# Prettier is an opinionated code formatter
-npm install --global prettier
-# PageSpeed Insights with reporting
-npm install --global psi
-# Using sitespeed.io you can test your web site against Web Performance best practices
-npm install --global sitespeed.io
-# WebPageTest API Wrapper is a NPM package that wraps WebPageTest API for NodeJS
-npm install --global webpagetest
-
-# Get composer and put it in the right place. This will require your password
-curl -sS https://getcomposer.org/installer | sudo php -- --install-dir=/usr/local/bin --filename=composer
-
-# Install Composer tools
-# composer parallel install plugin
-composer global require hirak/prestissimo
-# Drupal Coder, PHP_CodeSniffer, and Drupal Coding Standards
-composer global require drupal/coder
-# Adds WordPress Coding Standards
-composer global require wp-coding-standards/wpcs:dev-master
-composer global require pantheon-systems/terminus
-composer global require phpmd/phpmd
-composer global require sebastian/phpcpd
-composer global require consolidation/robo
-
-# Sets Config for PHP_CodeSniffer
-phpcs --config-set installed_paths $HOME/.composer/vendor/drupal/coder/coder_sniffer,$HOME/.composer/vendor/wp-coding-standards/wpcs
-
-# Be sure we can vagrant
-brew install ansible
-
-# Set up PHP tools
-# https://philsturgeon.uk/php/2013/08/20/php-static-analysis-in-sublime-text/
-# http://benmatselby.github.io/sublime-phpcs/
-echo "Setting up PHP Tools"
-sudo chown -R $(whoami) $(brew --prefix)/*
-brew tap homebrew/homebrew-php
-
-# Do the Mac thing that you have to do but you shouldn't have to do
-# This https://github.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain
-curl -o ~/Library/LaunchAgents/ssh.add.a.plist https://raw.githubusercontent.com/jirsbek/SSH-keys-in-macOS-Sierra-keychain/master/ssh.add.a.plist
-
-# Hold my own hand to make sure I finish configuring
-echo "Add your ssh keys (you put them in your secret hiding place)."
-pause 'Press [Enter] when you have added your ssh key.'
-chmod 400 ~/.ssh/*
 
 # Get git things
 #curl -o /usr/local/etc/bash_completion.d/git-prompt.sh https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
